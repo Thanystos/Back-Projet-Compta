@@ -1,0 +1,11 @@
+{
+    "python.defaultInterpreterPath": "venv/bin/python",
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": false,
+    "python.analysis.autoImportCompletions": true
+}
