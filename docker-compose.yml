@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: compta_db
+    restart: always
+    environment:
+      POSTGRES_USER: anthony
+      POSTGRES_PASSWORD: anthony_password
+      POSTGRES_DB: compta_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: compta_backend
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://anthony:anthony_password@db:5432/compta_db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      
+    # 🔥 MODE DEV : hot reload
+    # Uvicorn surveille les fichiers et recharge automatiquement
+    # À retirer pour la version PROD
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+  alembic:
+    build: ./backend
+    container_name: compta_alembic
+    depends_on:
+      - db
+    command: >
+      bash -c "alembic upgrade head"
+    environment:
+      DATABASE_URL: postgresql://anthony:anthony_password@db:5432/compta_db
+    volumes:
+      - ./backend:/app
+
+volumes:
+  postgres_data:
