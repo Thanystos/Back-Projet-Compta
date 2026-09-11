@@ -1,0 +1,95 @@
+# ============================================
+# GLOBAL
+# ============================================
+
+# Logs
+logs/
+*.log
+*.tmp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environnements / secrets
+.env
+.env.*
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# ============================================
+# BACKEND — PYTHON / FASTAPI
+# ============================================
+
+# Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenv
+venv/
+env/
+.venv/
+
+# Caches
+.cache/
+pytest_cache/
+.mypy_cache/
+.dmypy.json
+
+# Alembic (ne pas ignorer les migrations !)
+alembic/*.pyc
+alembic/__pycache__/
+
+# ============================================
+# FRONTEND — REACT / VITE / TYPESCRIPT
+# ============================================
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+
+# Vite cache
+frontend/.vite/
+
+# Local config
+frontend/*.local
+
+# TypeScript build info
+frontend/*.tsbuildinfo
+
+# ============================================
+# DOCKER
+# ============================================
+
+# Local volumes
+docker-data/
+
+# Overrides locaux non versionnés
+docker-compose.override.yml
+
+# ============================================
+# EDITORS / IDE
+# ============================================
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+
+# JetBrains
+.idea/
+
+# ============================================
+# MISC
+# ============================================
+
+# Nginx cache (si jamais tu en génères)
+nginx/cache/
