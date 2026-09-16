@@ -6,11 +6,6 @@ from alembic import context
 import os
 import sys
 
-# Ajout du chemin du backend pour pouvoir importer app.*
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(BASE_DIR)
-sys.path.append(os.path.join(BASE_DIR, "app"))
-
 # Import de Base depuis ton projet FastAPI
 from app.database import Base
 from app import models  # IMPORTANT : importe tous tes modèles ici

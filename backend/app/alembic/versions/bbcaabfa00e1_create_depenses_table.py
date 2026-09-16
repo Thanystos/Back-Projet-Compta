@@ -1,8 +1,8 @@
 """create depenses table
 
-Revision ID: 586b505583df
-Revises: 6c19cd0de3bb
-Create Date: 2026-09-09 01:43:04.869433
+Revision ID: bbcaabfa00e1
+Revises: 
+Create Date: 2026-09-16 08:58:43.850978
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '586b505583df'
-down_revision: Union[str, Sequence[str], None] = '6c19cd0de3bb'
+revision: str = 'bbcaabfa00e1'
+down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -24,6 +24,13 @@ def upgrade() -> None:
     op.create_table('depenses',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('nom', sa.String(), nullable=False),
+    sa.Column('montant', sa.Float(), nullable=False),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('categorie', sa.String(), nullable=True),
+    sa.Column('description', sa.String(), nullable=True),
+    sa.Column('moyen_paiement', sa.String(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_depenses_id'), 'depenses', ['id'], unique=False)
